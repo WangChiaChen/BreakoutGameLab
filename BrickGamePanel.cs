@@ -69,7 +69,7 @@ namespace BreakoutGameLab001
                 if (ball.Y + ball.Radius >= paddle.Y + paddle.Height)
                 {
                     timer.Stop();
-                    MessageBox.Show("沒碰到擋板,遊戲結束！");
+                    MessageBox.Show("擋板沒碰到,遊戲結束！");
                     return;
                 }
             }
