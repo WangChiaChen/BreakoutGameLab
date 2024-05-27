@@ -1,16 +1,18 @@
-﻿namespace BreakoutGameLab001
+﻿using System.Drawing;
+
+namespace BreakoutGameLab001
 {
-    // 擋板類別
+    // Paddle class
     class Paddle
     {
-        // 屬性
+        // Properties
         public int X { get; set; }
         public int Y { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
         public Color Color { get; set; }
 
-        // 建構子
+        // Constructor
         public Paddle(int x, int y, int width, int height, Color color)
         {
             X = x;
@@ -20,10 +22,17 @@
             Color = color;
         }
 
-        // 加入其他方法
+        // Draw the paddle
+        internal void Draw(Graphics gr)
+        {
+            gr.FillRectangle(new SolidBrush(this.Color), X, Y, Width, Height);
+            gr.DrawRectangle(new Pen(Color.Black, 1), X, Y, Width, Height);
+        }
 
-        // 繪製擋板
-
-        // TODO: 左右移動擋板
+        // Move the paddle
+        public void Move(int dx)
+        {
+            X += dx;
+        }
     }
 }

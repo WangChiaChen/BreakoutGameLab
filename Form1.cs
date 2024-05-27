@@ -1,12 +1,12 @@
-
+ï»¿
 using System.Reflection.Metadata;
 
 namespace BreakoutGameLab001
 {
     public partial class Form1 : Form
     {
-        // ¹CÀ¸­±ªO±±¨î¶µ
-        CustomizedPanel gamePanel;
+        
+        BrickGamePanel gamePanel;
         //
         public Form1()
         {
@@ -17,10 +17,11 @@ namespace BreakoutGameLab001
 
         private void InitializeGame()
         {
-            // ²¾°£ ´ú¸Õ¥Î panel2 ±±¨î¶µ
-            Controls.Remove( panel2 );
+            
+            Controls.Remove(panel2);
             //
-            gamePanel = new CustomizedPanel( panel2.Width, panel2.Height);
+
+            gamePanel = new BrickGamePanel(panel2.Width, panel2.Height);
             gamePanel.Dock = DockStyle.Fill;
             gamePanel.Location = new Point(0, 61);
             gamePanel.Name = "BrickoutGamePanel";
@@ -31,6 +32,26 @@ namespace BreakoutGameLab001
             //
             Controls.Add(gamePanel);
             //
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            //if(e.Keycode==keys.Left){...}
+            switch (e.KeyCode)
+            {
+                case Keys.Left:
+                    gamePanel.paddleMoveLeft();
+                    break;
+                case Keys.Right:
+                    gamePanel.paddleMoveRight();
+                    break;
+                case Keys.Up:
+                    //
+                    break;
+                default:
+                    //
+                    break;
+            }
         }
     }
 }
